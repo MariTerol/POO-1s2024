@@ -1,4 +1,4 @@
-package atividade_1;
+package atividades.atividade_1;
 
 import java.util.Scanner;
 
@@ -23,14 +23,15 @@ public class Main {
         System.out.println("Multiplicar: " + Calc.multiplicar());
         System.out.println("Dividir: " + Calc.dividir());
         
+       
         System.out.println("Digite um número para verificar se é primo:");
-        int numero = scanner.nextInt();
+        int n = scanner.nextInt();
 
     
-        if (Calc.verificarNumeroPrimo(numero)) {
-            System.out.println(numero + " = True");
+        if (Calc.verificarNumeroPrimo(n)) {
+            System.out.println(n + " = True");
         } else {
-            System.out.println(numero + " = False");
+            System.out.println(n + " = False");
         }
 
     }
