@@ -1,4 +1,4 @@
-package atividade_1;
+package atividades.atividade_1;
 
 public class Calculadora {
 

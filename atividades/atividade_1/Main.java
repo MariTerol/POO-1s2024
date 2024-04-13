@@ -1,4 +1,4 @@
-package atividade_1;
+package atividades.atividade_1;
 
 import java.util.Scanner;
 
@@ -23,6 +23,7 @@ public class Main {
         System.out.println("Multiplicar: " + Calc.multiplicar());
         System.out.println("Dividir: " + Calc.dividir());
         
+       
         System.out.println("Digite um número para verificar se é primo:");
         int n = scanner.nextInt();
 
