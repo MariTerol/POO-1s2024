@@ -1,4 +1,4 @@
-package exemplo;
+package exemplos.exemplo1;
 
 public class Exemplo {
 
