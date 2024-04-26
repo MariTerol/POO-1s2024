@@ -1,4 +1,4 @@
-package aulas.aula3;
+package aulas.aula4;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,10 @@ public class Livraria {
 
     }
 
+    public void adicionarLivro(Livro livro) {
+        this.livros.add(livro);
+    }
+
     public String listarLivros(){
         String listarLivros = "";
 
@@ -24,4 +28,19 @@ public class Livraria {
         }
         return listarLivros;
     }
+
+    public String detalharLivros(int id){
+        String detalharLivros = "Livro nao encontrado.\n"; 
+
+        for(Livro livro : livros){
+           if (livro.id == id) {
+            detalharLivros = livro.toString();
+           } 
+        }
+
+
+        return detalharLivros;
+    }
+
+    
 }
