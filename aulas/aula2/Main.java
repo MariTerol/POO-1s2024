@@ -6,7 +6,7 @@ public class Main {
         
         Calculadora Calc = new Calculadora();
         Calc.numA = 2.0;
-        Calc.numB = 2.0;
+        Calc.numB = 1.0;
         Calc.somar(Calc.numA, Calc.numB);
 
         System.out.println("Soma: " + Calc.somar(2.0, 1.0));
