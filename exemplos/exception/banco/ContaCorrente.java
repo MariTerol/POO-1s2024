@@ -5,6 +5,12 @@ public class ContaCorrente {
     private String nomeConta;
     private Double saldo;
 
+    private ContaCorrente(){}
+
+    public ContaCorrente(String nomeConta){
+        this.nomeConta=nomeConta;
+        this.saldo = 0.0;
+    }
 
     public String getNomeConta() {
         return this.nomeConta;
