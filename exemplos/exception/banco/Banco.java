@@ -3,6 +3,7 @@ package exemplos.exception.banco;
 import java.util.ArrayList;
 
 import exemplos.exception.banco.exceptions.ContaIneException;
+import exemplos.exception.banco.exceptions.ValorDepositoInvalidoException;
 
 public class Banco {
     
