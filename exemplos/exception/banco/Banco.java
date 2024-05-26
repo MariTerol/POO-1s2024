@@ -21,7 +21,7 @@ public class Banco {
     public void depositar(String nomeConta, Double ValorDeposito) throws Exception{
 
         if (ValorDeposito <= 0) {
-            throw new Exception();
+            throw new ValorDepositoInvalidoException();
         }
 
         ContaCorrente contaDeposito = null;
