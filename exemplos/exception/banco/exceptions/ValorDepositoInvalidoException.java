@@ -2,7 +2,7 @@ package exemplos.exception.banco.exceptions;
 
 public class ValorDepositoInvalidoException extends Exception{
     
-    Public ValorDepositoInvalidoException(){
+    public ValorDepositoInvalidoException(){
         super("Valor invalido, tente um numero positivo!");
     }
 
