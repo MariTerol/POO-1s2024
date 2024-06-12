@@ -38,6 +38,20 @@ public class Book {
         return books;
     }
 
+    public void update(String newTitle, int newAuthorId) {
+        this.title = newTitle;
+        this.authorId = newAuthorId;
+        Database db = new Database();
+        db.execute("UPDATE book SET title = ?, author_id = ? WHERE id = ?", new Object[]{newTitle, newAuthorId, id});
+        db.close();
+    }
+
+    public void delete() {
+        Database db = new Database();
+        db.execute("DELETE FROM book WHERE id = ?", new Object[]{id});
+        db.close();
+    }
+
     @Override
     public String toString() {
         return id + " - " + title;

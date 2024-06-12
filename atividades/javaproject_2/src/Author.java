@@ -36,6 +36,19 @@ public class Author {
         return authors;
     }
 
+    public void update(String newName) {
+        this.name = newName;
+        Database db = new Database();
+        db.execute("UPDATE author SET name = ? WHERE id = ?", new Object[]{newName, id});
+        db.close();
+    }
+
+    public void delete() {
+        Database db = new Database();
+        db.execute("DELETE FROM author WHERE id = ?", new Object[]{id});
+        db.close();
+    }
+
     @Override
     public String toString() {
         return id + " - " + name;
