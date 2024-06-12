@@ -1,0 +1,10 @@
+package exemplos.polimorfismo;
+
+public class Cachorro extends Animal {
+    
+    @Override
+    public void fazerSom(){
+        System.out.println("Cachorro latindo!");
+    }
+
+}
