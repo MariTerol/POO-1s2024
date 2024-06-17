@@ -1,3 +1,5 @@
+package atividades.javaproject_2.src;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,14 +10,18 @@ public class Main {
         while (true) {
             System.out.println("\nLibrary Management System");
             System.out.println("1. Register Author");
-            System.out.println("2. Register Book");
-            System.out.println("3. List Authors");
-            System.out.println("4. List Books");
-            System.out.println("5. Update Author");
-            System.out.println("6. Delete Author");
-            System.out.println("7. Update Book");
-            System.out.println("8. Delete Book");
-            System.out.println("9. Exit");
+            System.out.println("2. Register Fiction Author");
+            System.out.println("3. Register Non-Fiction Author");
+            System.out.println("4. Register Book");
+            System.out.println("5. Register Fiction Book");
+            System.out.println("6. Register Non-Fiction Book");
+            System.out.println("7. List Authors");
+            System.out.println("8. List Books");
+            System.out.println("9. Update Author");
+            System.out.println("10. Delete Author");
+            System.out.println("11. Update Book");
+            System.out.println("12. Delete Book");
+            System.out.println("13. Exit");
             System.out.print("Choose an option: ");
             String option = scanner.nextLine();
 
@@ -24,27 +30,39 @@ public class Main {
                     registerAuthor();
                     break;
                 case "2":
-                    registerBook();
+                    registerFictionAuthor();
                     break;
                 case "3":
-                    listAuthors();
+                    registerNonFictionAuthor();
                     break;
                 case "4":
-                    listBooks();
+                    registerBook();
                     break;
                 case "5":
-                    updateAuthor();
+                    registerFictionBook();
                     break;
                 case "6":
-                    deleteAuthor();
+                    registerNonFictionBook();
                     break;
                 case "7":
-                    updateBook();
+                    listAuthors();
                     break;
                 case "8":
-                    deleteBook();
+                    listBooks();
                     break;
                 case "9":
+                    updateAuthor();
+                    break;
+                case "10":
+                    deleteAuthor();
+                    break;
+                case "11":
+                    updateBook();
+                    break;
+                case "12":
+                    deleteBook();
+                    break;
+                case "13":
                     System.out.println("Exiting...");
                     scanner.close();
                     return;
@@ -62,6 +80,20 @@ public class Main {
         System.out.println("Author registered successfully!");
     }
 
+    private static void registerFictionAuthor() {
+        System.out.print("Fiction author's name: ");
+        String authorName = "[Fiction] " + scanner.nextLine();
+        Library.registerAuthor(authorName);
+        System.out.println("Fiction author registered successfully!");
+    }
+
+    private static void registerNonFictionAuthor() {
+        System.out.print("Non-Fiction author's name: ");
+        String authorName = "[Non-Fiction] " + scanner.nextLine();
+        Library.registerAuthor(authorName);
+        System.out.println("Non-Fiction author registered successfully!");
+    }
+
     private static void registerBook() {
         System.out.print("Book title: ");
         String bookTitle = scanner.nextLine();
@@ -74,6 +106,34 @@ public class Main {
         int authorId = Integer.parseInt(scanner.nextLine());
         Library.registerBook(bookTitle, authorId);
         System.out.println("Book registered successfully!");
+    }
+
+    private static void registerFictionBook() {
+        System.out.print("Fiction book title: ");
+        String bookTitle = "[Fiction] " + scanner.nextLine();
+        System.out.println("Available authors:");
+        List<Author> authors = Library.listAuthors();
+        for (Author author : authors) {
+            System.out.println(author);
+        }
+        System.out.print("Author ID: ");
+        int authorId = Integer.parseInt(scanner.nextLine());
+        Library.registerBook(bookTitle, authorId);
+        System.out.println("Fiction book registered successfully!");
+    }
+
+    private static void registerNonFictionBook() {
+        System.out.print("Non-Fiction book title: ");
+        String bookTitle = "[Non-Fiction] " + scanner.nextLine();
+        System.out.println("Available authors:");
+        List<Author> authors = Library.listAuthors();
+        for (Author author : authors) {
+            System.out.println(author);
+        }
+        System.out.print("Author ID: ");
+        int authorId = Integer.parseInt(scanner.nextLine());
+        Library.registerBook(bookTitle, authorId);
+        System.out.println("Non-Fiction book registered successfully!");
     }
 
     private static void listAuthors() {
@@ -122,3 +182,4 @@ public class Main {
         Library.deleteBook(bookId);
     }
 }
+

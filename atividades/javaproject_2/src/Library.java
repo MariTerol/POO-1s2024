@@ -10,8 +10,28 @@ public class Library {
         author.save();
     }
 
+    public static void registerFictionAuthor(String name) {
+        FictionAuthor author = new FictionAuthor(name);
+        author.save();
+    }
+
+    public static void registerNonFictionAuthor(String name) {
+        NonFictionAuthor author = new NonFictionAuthor(name);
+        author.save();
+    }
+
     public static void registerBook(String title, int authorId) {
         Book book = new Book(title, authorId);
+        book.save();
+    }
+
+    public static void registerFictionBook(String title, int authorId) {
+        FictionBook book = new FictionBook(title, authorId);
+        book.save();
+    }
+
+    public static void registerNonFictionBook(String title, int authorId) {
+        NonFictionBook book = new NonFictionBook(title, authorId);
         book.save();
     }
 
@@ -68,10 +88,17 @@ public class Library {
         ResultSet rs = db.query("SELECT * FROM author WHERE id = ?", new Object[]{authorId});
         try {
             if (rs.next()) {
-                Author author = new Author(rs.getString("name"));
-                author.id = rs.getInt("id");
-                db.close();
-                return author;
+                String name = rs.getString("name");
+                if (name.startsWith("[Fiction]")) {
+                    db.close();
+                    return new FictionAuthor(name.substring("[Fiction] ".length()));
+                } else if (name.startsWith("[Non-Fiction]")) {
+                    db.close();
+                    return new NonFictionAuthor(name.substring("[Non-Fiction] ".length()));
+                } else {
+                    db.close();
+                    return new Author(name);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,10 +113,18 @@ public class Library {
         ResultSet rs = db.query("SELECT * FROM book WHERE id = ?", new Object[]{bookId});
         try {
             if (rs.next()) {
-                Book book = new Book(rs.getString("title"), rs.getInt("author_id"));
-                book.id = rs.getInt("id");
-                db.close();
-                return book;
+                String title = rs.getString("title");
+                int authorId = rs.getInt("author_id");
+                if (title.startsWith("[Fiction]")) {
+                    db.close();
+                    return new FictionBook(title.substring("[Fiction] ".length()), authorId);
+                } else if (title.startsWith("[Non-Fiction]")) {
+                    db.close();
+                    return new NonFictionBook(title.substring("[Non-Fiction] ".length()), authorId);
+                } else {
+                    db.close();
+                    return new Book(title, authorId);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

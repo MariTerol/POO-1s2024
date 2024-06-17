@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Author {
-    private int id;
-    private String name;
+    protected int id;
+    protected String name;
 
     public Author(String name) {
         this.name = name;

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
-    private int id;
-    private String title;
-    private int authorId;
+    protected int id;
+    protected String title;
+    protected int authorId;
 
     public Book(String title, int authorId) {
         this.title = title;
@@ -23,7 +23,8 @@ public class Book {
 
     public static List<Book> list() {
         Database db = new Database();
-        ResultSet rs = db.query("SELECT book.id, book.title, author.name FROM book JOIN author ON book.author_id = author.id", new Object[]{});
+        ResultSet rs = db.query("SELECT book.id, book.title, book.author_id, author.name " +
+                                "FROM book JOIN author ON book.author_id = author.id", new Object[]{});
         List<Book> books = new ArrayList<>();
         try {
             while (rs.next()) {
